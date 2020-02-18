@@ -13,6 +13,23 @@ class App extends Component {
     ]
   };
 
+  //always called in the beginnning once...
+  //setState() can not be called before render so
+  //it could be best method to initialize state htere
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor", this.props);
+    // this.state =  this.props.something;
+  }
+
+  //after component is rendered into the dom
+  //perfect place to make ajax call to server
+  componentDidMount() {
+    // Ajax Call...
+    console.log("App - Mounted");
+    // then call this.setState({movies}) with new data
+  }
+
   handleIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -36,6 +53,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("App - Rendered");
     return (
       <React.Fragment>
         <NavBar
