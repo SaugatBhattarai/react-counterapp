@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  // state = {
-  //   value: this.props.counter.value
-  // };
-
-  // handleIncrement = () => {
-  //   // this.state.count++;
-  //   this.setState({ value: this.state.value + 1 });
-  //   // console.log("After increment: ", this.state.count);
-  // };
+  // optimizatin technique for ajax request to the server
+  // this function is called only if there is any changes in the
+  // state or props ... make ajax request if necessary
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    console.log("currentProps counter value", this.props.counter.value);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      //Ajax call and get data from server
+      console.log("Ajax call. Fetching data from server ...");
+    }
+  }
 
   render() {
     // console.log("props", this.props);
