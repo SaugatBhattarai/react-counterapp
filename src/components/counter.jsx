@@ -14,6 +14,18 @@ class Counter extends Component {
     }
   }
 
+  //UNMOUNTING
+  // React will compare this virtual dom with the old one
+  // figuresout one counter has been removed ...
+  // then it will call componentWillUnmount() before removing this
+  // from the DOM. This will give opportunity to cleanup.
+  // if you have sort of timers or listers we can clean those up before
+  // this component is removed from the dom
+  // otherwise we'll endup with memory leaks.
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
+  }
+
   render() {
     // console.log("props", this.props);
     console.log("Counter - Rendered");
